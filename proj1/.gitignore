@@ -1,1 +1,4 @@
 **/__pycache__
+**/core.*
+**/*.d
+client/chatclient

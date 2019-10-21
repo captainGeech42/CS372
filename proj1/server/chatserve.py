@@ -1,5 +1,13 @@
 #!/usr/bin/env python3
 
+"""
+Program: Chat Server (chatserve.py)
+Description: Spawns a TCP server for a novel chat system
+Written by: Alexander Nead-Work (neadwora)
+Course: CS 372-400 (Fall 2019, Redfield)
+Last Modified: 2019 Oct 22
+"""
+
 import sys
 
 from server import Server

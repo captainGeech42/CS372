@@ -21,6 +21,45 @@ int main(int argc, char **argv) {
     int port = atoi(argv[2]);
 
     int socket = connect_to_server(argv[1], port);
+
+    char buf[MAX_BUF_LEN];
+    char input[500];
+    int ret;
+    while (1) {
+        bzero(buf, MAX_BUF_LEN);
+        bzero(input, 500);
+
+        // get message
+        printf("%s> ", username);
+        fgets(input, 500, stdin);
+        input[strcspn(input, "\n")] = 0;
+        snprintf(buf, MAX_BUF_LEN, "%s> %s", username, input);
+
+        // send message
+        ret = write(socket, buf, MAX_BUF_LEN);
+        if (ret < 0) {
+            fprintf(stderr, "[!] error writing to socket: %s\n", strerror(errno));
+        } else if (ret == 0) {
+            puts("[*] socket closed by server");
+            return 0;
+        }
+
+        // check if quit
+        if (strcmp(input, "\\quit") == 0) {
+            close(socket);
+            return 0;
+        }
+
+        // recv message
+        if (read(socket, buf, MAX_BUF_LEN) < 0) {
+            fprintf(stderr, "[!] error reading from socket: %s\n", strerror(errno));
+        }
+
+        // print
+        printf("%s\n", buf);
+
+        // repeat
+    }
 }
 
 // get_username
@@ -46,7 +85,7 @@ int connect_to_server(char *host, int port) {
     struct sockaddr_in sa;
 
     sa.sin_family = AF_INET;
-    sa.sin_port = port;
+    sa.sin_port = htons(port);
 
     // if we don't have an IP, need to get one
     int ip_addr = inet_pton(AF_INET, host, &(sa.sin_addr));
@@ -63,15 +102,17 @@ int connect_to_server(char *host, int port) {
     // setup socket
     int fd = socket(AF_INET, SOCK_STREAM, 0);
     if (fd < 0) {
-        fprintf(stderr, "error on socket: %s\n", strerror(errno));
+        fprintf(stderr, "[!] error on socket: %s\n", strerror(errno));
         return 1;
     }
 
     // connect to server
     if (connect(fd, (struct sockaddr *)&sa, (socklen_t)sizeof(sa)) < 0) {
-        fprintf(stderr, "error on connect: %s\n", strerror(errno));
+        fprintf(stderr, "[!] error on connect: %s\n", strerror(errno));
         return 1;
     }
+
+    printf("[*] connected to %s:%d\n", host, port);
 
     return fd;
 }

@@ -20,7 +20,13 @@ class Server:
         self.start()
 
     def start(self):
-        """Start the chat server"""
+        """
+        start
+        Arguments: none
+        Returns: none
+        Pre-cond: none
+        Post-cond: Doesn't return     
+        """
 
         self.socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 
@@ -31,17 +37,18 @@ class Server:
         except:
             print("[!] error spawning server, try different port?")
 
-        conn, addr = self.socket.accept() # blocking
-        print(f"[*] got connection from {addr}")
+        while True:
+            conn, (ip, port) = self.socket.accept() # blocking
+            print(f"[*] got connection from {ip}:{port}")
 
-        handle(conn)
+            self.handle(conn)
 
-    def handle(self, conn: socket):
+    def handle(self, conn):
         """Handle a client socket connection"""
 
         # client sends first message
         while True:
-            data = conn.receive(max_buf) # blocking
+            data = conn.recv(max_buf).decode("utf-8") # blocking
             
             if "\quit" in data:
                 print("[*] closing (requested by client)")
@@ -50,7 +57,7 @@ class Server:
 
             print(data)
 
-            msg = get_input()
+            msg = input(prompt)
             
             if msg == "\quit":
                 print("[*] closing (requested by server)")
@@ -61,7 +68,4 @@ class Server:
                 print("[!] msg longer than 500 bytes, truncating")
                 msg = msg[:500]
             data = prompt + msg
-            conn.sendall(data)
-        
-    def get_input(self):
-        return input(prompt)
+            conn.sendall(data.encode("utf-8"))

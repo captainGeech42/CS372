@@ -16,6 +16,6 @@ chatclient: chatclient.c chatclient.h
 	$(CC) $(C_FLAGS) -o $@ $^
 
 clean:
-	$(RM) $(out) *.d
+	$(RM) $(out) *.d core.*
 
 -include *.d

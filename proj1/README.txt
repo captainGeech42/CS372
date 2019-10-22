@@ -3,6 +3,11 @@ Run `make` from the main directory. This will compile the client, and symlink th
 Run client with `./chatclient`.
 Run server with `./chatserve`.
 
+If you get a traceback from the server that ends in this:
+      File "/usr/lib64/python3.6/socket.py", line 205, in accept
+        fd, addr = self._accept()
+    OSError: [Errno 22] Invalid argument
+You may need to pick a different port
 
 References
 https://docs.python.org/3.6/howto/sockets.html

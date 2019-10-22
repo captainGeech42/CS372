@@ -11,6 +11,7 @@ Last Modified: 2019 Oct 23
 
 #include <errno.h>
 #include <netdb.h>
+#include <stdbool.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -21,6 +22,7 @@ Last Modified: 2019 Oct 23
 #include <netinet/in.h>
 
 #define MAX_UNAME_BUF_LEN 12
+#define MAX_BUF_LEN 513
 
 int main(int, char **);
 int get_username(char *);

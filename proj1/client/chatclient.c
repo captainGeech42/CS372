@@ -46,6 +46,7 @@ int main(int argc, char **argv) {
 
         // check if quit
         if (strcmp(input, "\\quit") == 0) {
+            puts("[*] goodbye!");
             close(socket);
             return 0;
         }
@@ -88,11 +89,8 @@ int connect_to_server(char *host, int port) {
     sa.sin_port = htons(port);
 
     // if we don't have an IP, need to get one
-    int ip_addr = inet_pton(AF_INET, host, &(sa.sin_addr));
-    if (ip_addr > 0) {
-        // host is IP address
-        sa.sin_addr.s_addr = ip_addr;
-    } else {
+    int is_ip = inet_pton(AF_INET, host, &(sa.sin_addr));
+    if (!is_ip) {
         // do dns
         struct hostent *he;
         he = gethostbyname(host);

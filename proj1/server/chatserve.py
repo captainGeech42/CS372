@@ -14,7 +14,7 @@ from server import Server
 
 def main(argv):
     if len(argv) != 2:
-        print(f"[!] usage: {argv[0]} <port>")
+        print(f"[!] usage: {argv[0]} [port]")
         return 1
 
     try:

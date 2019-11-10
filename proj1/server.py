@@ -25,7 +25,7 @@ class Server:
         Arguments: none
         Returns: none
         Pre-cond: none
-        Post-cond: Doesn't return     
+        Post-cond: Doesn't return
         """
 
         self.socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
@@ -49,7 +49,7 @@ class Server:
         # client sends first message
         while True:
             data = conn.recv(max_buf).decode("utf-8") # blocking
-            
+
             if "\quit" in data:
                 print("[*] closing (requested by client)")
                 conn.close()
@@ -58,9 +58,10 @@ class Server:
             print(data)
 
             msg = input(prompt)
-            
+
             if msg == "\quit":
                 print("[*] closing (requested by server)")
+                conn.sendall(msg.encode("utf-8"))
                 conn.close()
                 break
 

@@ -56,6 +56,13 @@ int main(int argc, char **argv) {
             fprintf(stderr, "[!] error reading from socket: %s\n", strerror(errno));
         }
 
+        // check if server quit
+        if (strstr(buf, "\\quit")) {
+            puts("[*] server closed connection, goodbye!");
+            close(socket);
+            return 0;
+        }
+
         // print
         printf("%s\n", buf);
 

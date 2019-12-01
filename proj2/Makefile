@@ -6,7 +6,7 @@ DEBUG_FLAGS=-DDEBUG -ggdb
 OUT_FILE=neadwora_proj2.zip
 
 .PHONY: all
-all: $(out) chatserve
+all: $(out) ftclient
 
 .SILENT: debug
 .PHONY: debug
@@ -14,15 +14,15 @@ debug:
 	$(eval C_FLAGS += $(DEBUG_FLAGS))
 	echo > /dev/null
 
-$(out): 
+$(out): server.*
 	$(CC) $(C_FLAGS) -o $@ $^
 
 clean:
-	$(RM) $(out) *.d core.* $(out)
+	$(RM) $(out) *.d core.* $(out) ftclient
 
 ftclient:
 	@ln -s ftclient.py ftclient 2>/dev/null || true
-	@chmod +x chatserve.py
+	@chmod +x ftclient.py
 
 -include *.d
 

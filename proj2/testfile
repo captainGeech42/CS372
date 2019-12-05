@@ -1,0 +1,93 @@
+Planned extra credit:
+- multithread server
+- user auth
+- interactive mode
+- any file type
+- change directory
+- allow client to save file to arbitrary name
+
+CONTROL CONNECTION
+client sends "port\n"
+client sends "command\n"
+
+DATA CONNECTION
+"ls"
+    server sends "de\n" for each de
+    server sends "\0\0\n"
+"get"
+    server sends "length\n"
+    server sends "file" (1500 byte chunks)
+
+Resources used:
+https://stackoverflow.com/q/13669474
+https://www.geeksforgeeks.org/c-program-list-files-sub-directories-directory/
+https://github.com/captainGeech42/CS344/blob/master/otp/common.c#L27 (this is my own GitHub, CS344 OTP assignment)Planned extra credit:
+- multithread server
+- user auth
+- interactive mode
+- any file type
+- change directory
+- allow client to save file to arbitrary name
+
+CONTROL CONNECTION
+client sends "port\n"
+client sends "command\n"
+
+DATA CONNECTION
+"ls"
+    server sends "de\n" for each de
+    server sends "\0\0\n"
+"get"
+    server sends "length\n"
+    server sends "file" (1500 byte chunks)
+
+Resources used:
+https://stackoverflow.com/q/13669474
+https://www.geeksforgeeks.org/c-program-list-files-sub-directories-directory/
+https://github.com/captainGeech42/CS344/blob/master/otp/common.c#L27 (this is my own GitHub, CS344 OTP assignment)Planned extra credit:
+- multithread server
+- user auth
+- interactive mode
+- any file type
+- change directory
+- allow client to save file to arbitrary name
+
+CONTROL CONNECTION
+client sends "port\n"
+client sends "command\n"
+
+DATA CONNECTION
+"ls"
+    server sends "de\n" for each de
+    server sends "\0\0\n"
+"get"
+    server sends "length\n"
+    server sends "file" (1500 byte chunks)
+
+Resources used:
+https://stackoverflow.com/q/13669474
+https://www.geeksforgeeks.org/c-program-list-files-sub-directories-directory/
+https://github.com/captainGeech42/CS344/blob/master/otp/common.c#L27 (this is my own GitHub, CS344 OTP assignment)Planned extra credit:
+- multithread server
+- user auth
+- interactive mode
+- any file type
+- change directory
+- allow client to save file to arbitrary name
+
+CONTROL CONNECTION
+client sends "port\n"
+client sends "command\n"
+
+DATA CONNECTION
+"ls"
+    server sends "de\n" for each de
+    server sends "\0\0\n"
+"get"
+    server sends "length\n"
+    server sends "file" (1500 byte chunks)
+
+Resources used:
+https://stackoverflow.com/q/13669474
+https://www.geeksforgeeks.org/c-program-list-files-sub-directories-directory/
+https://github.com/captainGeech42/CS344/blob/master/otp/common.c#L27 (this is my own GitHub, CS344 OTP assignment)
